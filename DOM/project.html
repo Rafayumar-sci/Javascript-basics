@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>DOM Application</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #sheet {
+            height: 100vh;
+        }
+
+        .card {
+            margin: auto;
+            width: 30%;
+            padding: 5% 4%;
+            background-color: bisque;
+            text-align: center;
+            margin-top: 10%;
+            border-radius: 20px;
+            box-shadow: 5px 10px grey;
+
+
+
+        }
+
+        #btn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 15px;
+            background-color: burlywood;
+        }
+
+        #mode {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 15px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+
+    <div id="sheet">
+
+        <div class="card">
+            <h1 id="heading">Hey, Today we will learn how to relate and connect DOM in JS with HTML and CSS</h1>
+
+            <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fugit illo ab amet unde ullam
+                odio
+                voluptatibus rerum consequuntur facere. Modi pariatur minima ipsam maxime! Eligendi minima, aliquam
+                nulla,
+                corporis adipisci perspiciatis fuga sunt voluptatem fugiat quia magni!</p>
+
+            <h3 id="info">we will use internal CSS and JS </h3>
+
+            <button id="btn" onclick="changeText()">Read more</button>
+
+            <button id="mode" onclick="changeMode()">Dark mode</button>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+
+
+        let get_btn = document.getElementById("btn")
+
+
+        function changeText() {
+            if (get_btn.innerHTML == "Read more") {
+                get_btn.innerHTML = "Read less"
+            }
+            else {
+                get_btn.innerHTML = "Read more"
+            }
+        }
+
+
+        let mode_changer = document.getElementById("mode")
+
+        function changeMode() {
+            if (mode_changer.innerHTML == "Dark mode") {
+                mode_changer.innerHTML = "Light mode"
+            }
+            else {
+                mode_changer.innerHTML = "Dark mode"
+            }
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
