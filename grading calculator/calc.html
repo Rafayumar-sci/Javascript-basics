@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grading Calculator</title>
+</head>
+<body>
+
+<script>
+    
+    let marks = prompt("Enter your marks:");
+
+    
+    marks = parseInt(marks);
+
+    let grade;
+
+  
+    if (marks >= 90) {
+        grade = "A+";
+    } else if (marks >= 80) {
+        grade = "A";
+    } else if (marks >= 70) {
+        grade = "B";
+    } else if (marks >= 60) {
+        grade = "C";
+    } else if (marks >= 50) {
+        grade = "D";
+    } else {
+        grade = "Fail";
+    }
+
+ 
+    document.write("Your Marks: " + marks + "<br>");
+    document.write("Your Grade: " + grade);
+</script>
+
+</body>
+</html>

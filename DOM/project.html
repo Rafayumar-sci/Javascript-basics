@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>DOM Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image slider</title>
+
 
     <style>
         * {
@@ -13,74 +14,93 @@
             box-sizing: border-box;
         }
 
-        #sheet {
+        .sheet {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            background-color: beige;
+
         }
 
-        .card {
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 90%;
+            max-width: 700px;
             margin: auto;
-            width: 30%;
-            padding: 5% 4%;
-            background-color: bisque;
-            text-align: center;
-            margin-top: 10%;
-            border-radius: 20px;
-            box-shadow: 5px 10px grey;
-
-
-
+            overflow: hidden;
+            border-radius: 15px;
         }
 
-        #btn {
-            width: 100%;
+        .slider-wrapper {
             display: flex;
-            justify-content: center;
-            padding: 10px;
-            margin-top: 18px;
-            border: none;
-            border-radius: 15px;
-            background-color: burlywood;
+            transition: transform 0.3s ease-in-out;
         }
 
-        #mode {
-            width: 100%;
+        .slide {
+            min-width: 100%;
+            height: 300px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 10px;
-            margin-top: 18px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(237, 237, 237, 0.5);
+            color: white;
             border: none;
-            border-radius: 15px;
-            background-color: burlywood;
+            padding: 1rem;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
         }
     </style>
+
 </head>
-
-
-
 
 <body>
 
-    <div id="sheet">
+    <div class="sheet">
 
-        <div class="card">
-            <h1 id="heading">Hey, Today we will learn how to relate and connect DOM in JS with HTML and CSS</h1>
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slide" style="background: #520795;">
+                    <img src="https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp" alt="">
+                </div>
+                <div class="slide" style="background: #06ede5;">
+                    <img src="https://img.freepik.com/free-photo/beautiful-lake-mountains_395237-44.jpg?semt=ais_hybrid&w=740&q=80"
+                        alt="">
+                </div>
+                <div class="slide" style="background: #689607;">
+                    <img src="https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg"
+                        alt="">
+                </div>
+            </div>
 
-            <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fugit illo ab amet unde ullam
-                odio
-                voluptatibus rerum consequuntur facere. Modi pariatur minima ipsam maxime! Eligendi minima, aliquam
-                nulla,
-                corporis adipisci perspiciatis fuga sunt voluptatem fugiat quia magni!</p>
-
-            <h3 id="info">we will use internal CSS and JS </h3>
-
-            <button id="btn" onclick="changeText()">Read more</button>
-
-            <button id="mode" onclick="changeMode()">Dark mode</button>
-
+            <button class="btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="btn next" onclick="moveSlide(1)">&#10095;</button>
         </div>
-
-
+        <h1>image slider</h1>
+        <h3>click on the right and left arrows to change the image</h3>
     </div>
+
+
+
 
 
 
@@ -90,32 +110,32 @@
     <script>
 
 
-        let get_btn = document.getElementById("btn")
+        let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
 
 
-        function changeText() {
-            if (get_btn.innerHTML == "Read more") {
-                get_btn.innerHTML = "Read less"
+            currentIndex += direction;
+
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
             }
-            else {
-                get_btn.innerHTML = "Read more"
-            }
+
+
+            const offset = currentIndex * -100;
+            document.querySelector('.slider-wrapper').style.transform = `translateX(${offset}%)`;
         }
-
-
-        let mode_changer = document.getElementById("mode")
-
-        function changeMode() {
-            if (mode_changer.innerHTML == "Dark mode") {
-                mode_changer.innerHTML = "Light mode"
-            }
-            else {
-                mode_changer.innerHTML = "Dark mode"
-            }
-        }
-
 
     </script>
+
+
+
+
+
 
 
 
